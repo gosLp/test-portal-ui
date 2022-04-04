@@ -32,14 +32,14 @@ export const Job: React.FC<{}> = ({}) => {
             onSubmit={async (values, {setErrors}) =>{
                 console.log(values);
                 let id;
-                const desc = values.desc;
+                const jdesc = values.desc;
                 const title = values.title;
-                const type = values.type;
+                const jtype = values.type;
                 const result = await axios.post(`${SERVER_ENDPOINTS}/jobs/create`,{
                     compId,
-                    desc,
+                    jdesc,
                     title,
-                    type
+                    jtype
                     
 
 

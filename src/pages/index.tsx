@@ -1,55 +1,25 @@
-// import {
-//   Link as ChakraLink,
-//   Text,
-//   Code,
-//   List,
-//   ListIcon,
-//   ListItem,
-// } from '@chakra-ui/react'
-// import { CheckCircleIcon, LinkIcon } from '@chakra-ui/icons'
-// import { Hero } from '../components/Hero'
-// import { Container } from '../components/Container'
-// import { Main } from '../components/Main'
-// import { DarkModeSwitch } from '../components/DarkModeSwitch'
-// import { CTA } from '../components/CTA'
-// import { Footer } from '../components/Footer'
+import { Container, Box, Heading } from "@chakra-ui/react"
 
-const Index = () => (
-  <div>hello World</div>
-  // <Container height="100vh">
-  //   <Hero />
-  //   <Main>
-  //     <Text>
-  //       Example repository of <Code>Next.js</Code> + <Code>chakra-ui</Code>.
-  //     </Text>
+const Index = () => {
+  return(
+    <Container>
+      <Box borderRadius='lg' bg='red' p={3} mb={6 } alignSelf='center'>
+        Hello, Welcome to the Job Post
+      </Box>
+       <Box display={{md:'flex'}}>
+          <Box flexGrow={1}>
+            <Heading as='h2' variant="page-title">JobPost</Heading>
+            <p> A Website to help look for Jobs listings from companies, and companies to list their jobs to find you.</p>
+            <p> First Register or Login as an Applicant or a Company to Either look for Job Posts or Put up Job Posts.</p>
+          
+          </Box>
+      </Box>
+      {/* <div>hello World</div> */}
+    </Container>
+  )
+}
 
-  //     <List spacing={3} my={0}>
-  //       <ListItem>
-  //         <ListIcon as={CheckCircleIcon} color="green.500" />
-  //         <ChakraLink
-  //           isExternal
-  //           href="https://chakra-ui.com"
-  //           flexGrow={1}
-  //           mr={2}
-  //         >
-  //           Chakra UI <LinkIcon />
-  //         </ChakraLink>
-  //       </ListItem>
-  //       <ListItem>
-  //         <ListIcon as={CheckCircleIcon} color="green.500" />
-  //         <ChakraLink isExternal href="https://nextjs.org" flexGrow={1} mr={2}>
-  //           Next.js <LinkIcon />
-  //         </ChakraLink>
-  //       </ListItem>
-  //     </List>
-  //   </Main>
+  
 
-  //   <DarkModeSwitch />
-  //   <Footer>
-  //     <Text>Next ❤️ Chakra</Text>
-  //   </Footer>
-  //   <CTA />
-  // </Container>
-)
 
 export default Index

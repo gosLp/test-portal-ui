@@ -45,7 +45,7 @@ interface registerProps{
             const fetchAppli = async()=>{
                 const response = await fetch(`${SERVER_ENDPOINTS}/applicant/${query.applicant}`)
                 const data = await response.json();
-                // console.log(data);
+                console.log(data);
                 const applicant = data.applicant[0];
                 setData(applicant);
             }   
@@ -89,7 +89,12 @@ interface registerProps{
                 </Link>
                 </>)}
                 
-                
+                <Link ml="auto" onClick={() => 
+                                    router.push({pathname:'/companyPostings', query: {compId: compData._id }})
+                                }>
+                                   Company Job Postings <ExternalLinkIcon mx='2px'/>
+                    
+                </Link>
                 <Text >Jobs Created by Company</Text>
                 <Button >Look</Button>
 
@@ -124,35 +129,35 @@ interface registerProps{
                             {
 
              jobData.jobs.map((job, index) => {
-          return (
-              <>
-              <Box
-                 p={5}
-                 shadow='md'
-                 borderWidth='1px'
-                 flex='1'
-                 borderRadius='md'
-                 mt={4}
-             >
-                
-                 <Heading fontSize='xl'>{job.title}</Heading>
-                 {/* <NextLink href='/manageDriver'> */}
-                     <Link ml="auto" onClick={() => 
-                         router.push({pathname:'/viewjob' , query:{jobId:job._id, applicant:appData._id }})
-                    }>
-                        Job  <ExternalLinkIcon mx='2px'/>
-        
+            return (
+                <>
+                <Box
+                    p={5}
+                    shadow='md'
+                    borderWidth='1px'
+                    flex='1'
+                    borderRadius='md'
+                    mt={4}
+                >
+                    
+                    <Heading fontSize='xl'>{job.title}</Heading>
+                    {/* <NextLink href='/manageDriver'> */}
+                        <Link ml="auto" onClick={() => 
+                            router.push({pathname:'/viewjob' , query:{jobId:job._id, applicant:appData._id }})
+                        }>
+                            Job  <ExternalLinkIcon mx='2px'/>
+            
+                        </Link>
+                        <Link ml="auto" onClick={() => 
+                            router.push({pathname:'/company'})
+                        }>
+                            Company  <ExternalLinkIcon mx='2px'/>
+            
                     </Link>
-                     <Link ml="auto" onClick={() => 
-                         router.push({pathname:'/company'})
-                     }>
-                        Company  <ExternalLinkIcon mx='2px'/>
         
-                   </Link>
-    
-              
                 
-             </Box>
+                    
+                </Box>
                 
              </>
           )
