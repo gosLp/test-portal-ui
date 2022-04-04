@@ -1,6 +1,6 @@
 import React , {useEffect, useState} from "react";
 import {Form, Formik, Field} from "formik"
-import { InputGroup, Heading, Box, Button, FormControl, FormLabel, Text, Link, Input } from "@chakra-ui/react";
+import { InputGroup, Heading, Box, Button, FormControl, FormLabel, Text, Link, Input, HStack } from "@chakra-ui/react";
 import router, { useRouter } from "next/router";
 import { InputField } from "../components/InputField";
 import { Wrapper } from "../components/Wrapper";
@@ -73,14 +73,25 @@ interface registerProps{
          if(compData){
              return(
                 <>
-                <div>Company Page</div>
+                <Heading>Company Page</Heading>
                 { !compData ?(
                     <>
                         <div>didnt work</div>
                     </>
                 ):(<>
-                    <div><Text > BIO: {compData.companyBio} </Text>
-                <Text> Number of Employees: {compData.employeeCount}</Text></div>
+
+                    <div>
+                    <Box mt={4}>
+                        <Heading fontSize='md'>  {compData.companyName} </Heading>
+                        </Box>
+                        <Box mt={4}>
+                        <Text > BIO : {compData.companyBio} </Text>
+                        </Box>
+                        <Box mt={4}>
+                        <Text> Number of Employees: {compData.employeeCount}</Text>
+                        </Box>
+                </div>
+                
                 <Link ml="auto" onClick={() => 
                                     router.push({pathname:'/job', query: {compId: compData._id }})
                                 }>
@@ -95,8 +106,8 @@ interface registerProps{
                                    Company Job Postings <ExternalLinkIcon mx='2px'/>
                     
                 </Link>
-                <Text >Jobs Created by Company</Text>
-                <Button >Look</Button>
+                
+                
 
              </>
              );
@@ -119,12 +130,18 @@ interface registerProps{
             return(
                 <>
                     <Heading>Applicant:</Heading>
-                    {appData && <div>{appData.applicantName}</div>}
-                    <Box mt = {4}>
-                            <Input name="Name" placeholder={"Name"}></Input>
+                    {appData && <div>{appData.applicantName}
+                             <Box>
+                            <Text as='h2'> Age: {appData.applicantAge}</Text>
                         </Box>
+                    </div>
+                    }
+                    {/* <Box mt = {4}>
+                            <Input name="Name" placeholder={"Name"}></Input>
+                        </Box> */}
+                        
                     <Box mt={4}>
-                     <h1>Jobs</h1>
+                     <h1>All Job Posting</h1>
                     </Box>
                             {
 
@@ -142,14 +159,24 @@ interface registerProps{
                     
                     <Heading fontSize='xl'>{job.title}</Heading>
                     {/* <NextLink href='/manageDriver'> */}
-                        <Link ml="auto" onClick={() => 
-                            router.push({pathname:'/viewjob' , query:{jobId:job._id, applicant:appData._id }})
+                        <Link ml="auto" onClick={() => {
+                            if(appData !==null){
+                                router.push({pathname:'/viewjob' , query:{jobId:job._id, applicant:appData._id }})
+                            }
+                        }
                         }>
                             Job  <ExternalLinkIcon mx='2px'/>
             
                         </Link>
-                        <Link ml="auto" onClick={() => 
-                            router.push({pathname:'/company'})
+                        <Link ml="auto" onClick={() => {
+                            console.log(job)
+                            // if(job.company){
+                            //     router.push({pathname:`/company?compId=${job.company}`);
+                            // }
+                            if(job.companyId){
+                                router.push({pathname: '/company', query:{compId:job.companyId}})
+                            }
+                        }
                         }>
                             Company  <ExternalLinkIcon mx='2px'/>
             

@@ -92,7 +92,7 @@ export const  companyPostings: React.FC<{}> = ({}) => {
                                             
 
                                      }>
-                                        Company Job Postings <ExternalLinkIcon mx='2px'/>
+                                        Applied Candidates for Job <ExternalLinkIcon mx='2px'/>
                     
                                     </Link>
                                    
